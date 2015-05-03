@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ee-soap-ws</artifactId>
+        <groupId>com.tutorial</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>simple-client</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>1.12</version>
+                <executions>
+                    <execution>
+                        <id>wsimport-from-jdk</id>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--Wsdl file location -->
+                    <wsdlUrls>
+                        <wsdlUrl>http://localhost:8080/simple-rpc-service/country?wsdl</wsdlUrl>
+                    </wsdlUrls>
+                    <!-- Keep generated files -->
+                    <keep>true</keep>
+                    <!-- Package name -->
+                    <packageName>com.ps.tutorial</packageName>
+                    <!-- generated source files destination-->
+                    <sourceDestDir>target/generated-code/src</sourceDestDir>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
